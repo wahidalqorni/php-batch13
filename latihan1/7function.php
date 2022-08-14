@@ -29,7 +29,7 @@
     $luasSegitiga = luasSegitiga(7,3);
 
     $luasPersegiPanjang = luasPersegiPanjang();
-    $luasPersegiPanjang2 = luasPersegiPanjang(8,7);
+    $luasPersegiPanjang2 = luasPersegiPanjang(8,7); // mengubah nilai default dari function luasPersegiPanjang
 
     echo "Luas Segitiga = $luasSegitiga";
     echo PHP_EOL;
