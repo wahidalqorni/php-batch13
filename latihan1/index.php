@@ -12,5 +12,7 @@
     <a href="2variabel.php">Variabel</a>
     <a href="3operator.php">Operator</a>
     <a href="4ifelse.php">If Else</a>
+    <a href="5looping.php">Looping</a>
+    <a href="6array.php">Array</a>
 </body>
 </html>
