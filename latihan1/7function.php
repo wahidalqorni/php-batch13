@@ -24,6 +24,11 @@
         return $luas;
     }
 
+
+    function getWord($word){
+        echo $word;
+    }
+
     // pemanggilan function
     // namafunction() / namafunction(isiparameter(value))
     $luasSegitiga = luasSegitiga(7,3);
@@ -36,5 +41,7 @@
     echo "Luas Persegi Panjang = $luasPersegiPanjang";
     echo PHP_EOL;
     echo "Luas Persegi Panjang 2 = $luasPersegiPanjang2";
+    echo PHP_EOL;
+    getWord("Selamat Siang");
 
 ?>
