@@ -11,12 +11,15 @@
 <h1>Halaman Driver</h1>
 
 <div class="row">
-    <table>
+    <a href="index.php?page=driver&action=add" class="btn btn-primary">Tambah</a>
+    <table class="table table-bordered">
         <tr>
             <th>No.</th>
             <th>Nama</th>
             <th>Kota</th>
             <th>Pendapatan</th>
+            <th>Jumlah Order</th>
+            <th>Action</th>
         </tr>
         <?php
             $no = 1;
@@ -26,7 +29,13 @@
             <td><?= $no++ ?></td>
             <td><?= $dt['Nama_driver'] ?></td>
             <td><?= $dt['Kota_driver'] ?></td>
-            <td><?= $dt['Pendapatan_Driver'] ?></td>
+            <td>Rp. <?= number_format($dt['Pendapatan_Driver']) ?></td>
+            <td><?= $dt['Jumlah_oRder'] ?></td>
+            <td>
+                <a href="index.php?page=driver&action=edit&Id_driver=<?= $dt['Id_driver'] ?>" class="btn btn-success">Edit</a>
+                
+                <a href="index.php?page=driver&action=delete&Id_driver=<?= $dt['Id_driver'] ?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger">Hapus</a>
+            </td>
         </tr>
         <?php
             endforeach;

@@ -61,14 +61,41 @@
         // jika ada parameter page (penamaan parameter page ada di atas di menu2 di hrefnya)
         if (isset($_GET['page'])) {
             $page = $_GET['page'];
+            $action = @$_GET['action'];
             // panggil file sesuai isi data yg ada di parameter page
             // cek lagi nama dari pagenya
             if ($_GET['page'] == 'driver') {
-                // panggil file driver/index.php
-                include __DIR__ . '/views/driver/index.php';
+
+                // periksa nilai actionnya
+                if ($action == 'add') {
+                    // maka tampilkan form tambah
+                    include __DIR__ . '/views/driver/add.php';
+                } else if ($action == 'edit') {
+                    // maka tampilkan form edit
+                    include __DIR__ . '/views/driver/edit.php';
+                } else if($action == 'delete') {
+                     // maka panggil file detele
+                     include __DIR__ . '/views/driver/delete.php';
+                } else {
+                    // panggil file driver/index.php
+                    include __DIR__ . '/views/driver/index.php';
+                }
+
             } else if ($page == 'transaksi') {
-                // panggil file transaksi/index.php
-                include __DIR__ . '/views/transaksi/index.php';
+                // periksa nilai actionnya
+                if ($action == 'add') {
+                    // maka tampilkan form tambah
+                    include __DIR__ . '/views/transaksi/add.php';
+                } else if ($action == 'edit') {
+                    // maka tampilkan form edit
+                    include __DIR__ . '/views/transaksi/edit.php';
+                } else if($action == 'delete') {
+                     // maka panggil file detele
+                     include __DIR__ . '/views/transaksi/delete.php';
+                } else {
+                    // panggil file transaksi/index.php
+                    include __DIR__ . '/views/transaksi/index.php';
+                }
             }
         } else {
             // echo __DIR__;
