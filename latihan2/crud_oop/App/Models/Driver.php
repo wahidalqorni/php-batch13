@@ -1,9 +1,17 @@
 <?php
 
-include 'App/Models/App.php';
+// namespace App\Models;
+require_once 'App/Models/App.php';
 
 class Driver extends App
 {
+
+    // public function __construct()
+    // {
+    //     require_once 'App/config/Database.php';
+    //     $this->app = new App();
+    //     // include __DIR__.'/App/Config/Database.php';
+    // }
 
     // menampilkan data
     public static function all()
@@ -11,25 +19,22 @@ class Driver extends App
 
         $app = new App();
 
-        $sql = "SELECT * FROM driverr ORDER BY Nama_driver ASC ";
+        $sql = "SELECT * FROM driverr ORDER BY Nama_driver ASC";
 
-        $result = $app->query($sql); // hasilnya ini akan berbentuk array
+        $result = $app->query($sql);
 
-        // jika datanya tidak ada, maka kasih kosongan
         if ($result->num_rows < 1) {
             $hasil[] = [];
         } else {
-            // jika datanya ada, maka ambil datanya (fetch_array), ditampung di variabel $data dan isikan
-
             while ($data = $result->fetch_array()) {
-                // ke variabel $hasil
                 $hasil[] = $data;
             }
         }
+
         return $hasil;
     }
 
-    // menampilkan detail data berdasarkan id yg dipilih
+    // fungsi menampilkdan data berdasarkan id 
     public static function find($id)
     {
 
@@ -37,59 +42,62 @@ class Driver extends App
 
         $sql = "SELECT * FROM driverr WHERE Id_driver = '$id' ";
 
-        $result = $app->query($sql); // hasilnya ini akan berbentuk array
+        // variabel utk hasil sqlnya
+        $result = $app->query($sql);
 
-        $hasil = $result->fetch_array();
-        return $hasil;
+        // $data = untuk menampung data dari fungsi query
+        // bertipe array
+        $data = $result->fetch_array();
+
+        return $data;
     }
 
+    // fungsi update data mahasiswa
     public static function create(array $data)
     {
-
         $app = new App();
-
-        // siapkan data yg akan diinput
+        // data yg bakal diinputkan ke tabel
+        // data ini dapat dari controller yg memanggil functoin create    
         $Nama_driver = $data['Nama_driver'];
         $Kota_driver = $data['Kota_driver'];
         $Pendapatan_Driver = $data['Pendapatan_Driver'];
         $Jumlah_oRder = $data['Jumlah_oRder'];
 
-        // sintaks sql utk insert data
-        $sql = "INSERT INTO driverr (Nama_driver, Kota_driver, Pendapatan_Driver, Jumlah_oRder ) VALUES ('$Nama_driver', '$Kota_driver', '$Pendapatan_Driver', '$Jumlah_oRder'  ) ";
-
-        // eksekusi querynya dgn memanggil fungsi query dari class App yg sudah dibuatkan objectnya ($app)
+        $sql = "INSERT INTO driverr (Nama_driver, Kota_driver, Pendapatan_Driver, Jumlah_oRder ) VALUES ('$Nama_driver', '$Kota_driver', '$Pendapatan_Driver', '$Jumlah_oRder' ) ";
+        // untuk mengeksekusi fungsi query dr mysql
         $result = $app->query($sql);
 
         return $result;
     }
 
+    // fungsi update data mahasiswa
     public static function update(array $data)
     {
-
         $app = new App();
 
-        // siapkan data yg akan diinput
         $Id_driver = $data['Id_driver'];
         $Nama_driver = $data['Nama_driver'];
         $Kota_driver = $data['Kota_driver'];
         $Pendapatan_Driver = $data['Pendapatan_Driver'];
         $Jumlah_oRder = $data['Jumlah_oRder'];
 
-        // sintaks sql utk insert data
-        $sql = "UPDATE driverr SET Nama_driver = '$Nama_driver', Kota_driver = '$Kota_driver', Pendapatan_Driver = '$Pendapatan_Driver', Jumlah_oRder = '$Jumlah_oRder' WHERE Id_driver = '$Id_driver' ";
+        $sql = "UPDATE driverr SET Nama_driver = '$Nama_driver', Kota_driver = '$Kota_driver', Pendapatan_Driver = '$Pendapatan_Driver', Jumlah_oRder = '$Jumlah_oRder' WHERE Id_driver = '$Id_driver'  ";
 
-        // eksekusi querynya dgn memanggil fungsi query dari class App yg sudah dibuatkan objectnya ($app)
+        // untuk mengeksekusi fungsi query dr mysql
         $result = $app->query($sql);
 
         return $result;
     }
 
+    // fungsi delete data
     public static function destroy($id)
     {
         $app = new App();
-        $sql = "DELETE FROM driverr WHERE Id_driver = '$id' ";
+
+        $sql = " DELETE FROM driverr WHERE Id_driver = '$id'  ";
+
         $result = $app->query($sql);
+
         return $result;
     }
-
 }
